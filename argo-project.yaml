@@ -56,7 +56,7 @@ spec:
         - p, proj:cluster-config:project-admins, repositories, delete, cluster-config/*, allow
       groups:
         - argo-admins
-        - system:authenticated:oauth
+        
   #roles:
   ## A role which provides read-only access to all applications in the project
   #- name: cluster-config-readonly
