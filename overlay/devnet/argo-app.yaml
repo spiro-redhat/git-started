@@ -1,0 +1,23 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-config
+  namespace: openshift-gitops
+spec:
+  project: cluster-config
+  source:
+    repoURL: https://github.com/spiro-redhat/git-started.git
+    targetRevision: main
+    path: 'overlay/devnet'
+  destination:
+    name: in-cluster
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+      allowEmpty: true 
+    syncOptions:
+      - CreateNamespace=true
+      - Replace=true
+      - ApplyOutOfSyncOnly=true
